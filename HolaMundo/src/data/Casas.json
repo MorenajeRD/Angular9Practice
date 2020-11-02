@@ -1,0 +1,35 @@
+[{
+  "Id": 1,
+  "Name": "C.C. MorenajeRD",
+  "Type": "House",
+  "Price": 12000
+}, {
+  "Id": 2,
+  "Name": "Villa Monereaux",
+  "Type": "Villa",
+  "Price": 6000
+}, {
+  "Id": 3,
+  "Name": "Apartamento Alex",
+  "Type": "Apartment",
+  "Price": 6300
+}
+  , {
+  "Id": 4,
+  "Name": "Casa Club IBC",
+  "Type": "Villa",
+  "Price": 8000
+}
+  , {
+  "Id": 5,
+  "Name": "Casa Club Ocean",
+  "Type": "House",
+  "Price": 10000
+}
+  , {
+  "Id": 6,
+  "Name": "Hacienda Estrella",
+  "Type": "Villa",
+  "Price": 19000
+}
+]

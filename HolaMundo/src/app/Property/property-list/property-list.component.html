@@ -1,1 +1,8 @@
-<p>property-list works!</p>
+<div class="row">
+  <div class="p-3 col-12 col-md-4 col-sm-6  " *ngFor="let Casa of Casas" >
+    <app-property-card
+    [Property]  = "Casa">
+
+    </app-property-card>
+  </div>
+</div>
