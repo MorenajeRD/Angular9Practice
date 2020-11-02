@@ -21,6 +21,7 @@ export class PropertyListComponent implements OnInit {
         this.Casas = data;
       },
       error => {
+
         console.log(error);
 
       }
