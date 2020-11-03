@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core'
+import { ICasa } from '../ICasa.interface'
 
 @Component(
   {
@@ -12,6 +13,6 @@ import { Component, Input } from '@angular/core'
 
 export class PropertyCardComponent {
 
-  @Input() Property : any
+  @Input() Property : ICasa
 
 }

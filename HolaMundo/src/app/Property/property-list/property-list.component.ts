@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import { HousingService } from 'src/app/services/housing.service';
+import { ICasa } from '../ICasa.interface';
 
 
 @Component({
@@ -11,7 +12,7 @@ import { HousingService } from 'src/app/services/housing.service';
 export class PropertyListComponent implements OnInit {
 
 
-  Casas: any;
+  Casas: Array<ICasa>;
 
   constructor(private ServicioCasas: HousingService) { }
 
@@ -21,9 +22,7 @@ export class PropertyListComponent implements OnInit {
         this.Casas = data;
       },
       error => {
-
         console.log(error);
-
       }
     );
   }
