@@ -1,34 +1,52 @@
 [{
   "Id": 1,
+  "SellRent": 1,
   "Name": "C.C. MorenajeRD",
   "Type": "House",
-  "Price": 12000
+  "Price": 12000,
+  "Image": "casa1"
 }, {
   "Id": 2,
+  "SellRent": 2,
   "Name": "Villa Monereaux",
   "Type": "Villa",
-  "Price": 6000
+  "Price": 6000,
+  "Image": "casa2"
 }, {
   "Id": 3,
   "Name": "Apartamento Alex",
   "Type": "Apartment",
-  "Price": 6300
+  "Price": 6300,
+  "Image": "casa3"
 }
   , {
   "Id": 4,
+  "SellRent": 1,
   "Name": "Casa Club IBC",
   "Type": "Villa",
-  "Price": 8000
+  "Price": 8000,
+  "Image": "casa4"
 }
   , {
   "Id": 5,
+  "SellRent": 1,
   "Name": "Casa Club Ocean",
   "Type": "House",
-  "Price": 10000
+  "Price": 10000,
+  "Image": "casa5"
 }
   , {
   "Id": 6,
+  "SellRent": 2,
   "Name": "Hacienda Estrella",
+  "Type": "Villa",
+  "Price": 19000,
+  "Image": "casa6"
+}
+, {
+  "Id": 7,
+  "SellRent": 1,
+  "Name": "Hacienda Pato",
   "Type": "Villa",
   "Price": 19000
 }

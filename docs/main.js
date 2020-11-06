@@ -33,11 +33,11 @@ class HousingService {
     constructor(http) {
         this.http = http;
     }
-    GetTodasLasCasas() {
+    GetTodasLasCasas(SellRent) {
         return this.http.get('data/Casas.json').pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_1__["map"])(data => {
             const casasArray = [];
             for (const id in data) {
-                if (data.hasOwnProperty(id)) {
+                if (data.hasOwnProperty(id) && data[id].SellRent === SellRent) {
                     casasArray.push(data[id]);
                 }
             }
@@ -249,9 +249,11 @@ const environment = {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PropertyListComponent", function() { return PropertyListComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "fXoL");
-/* harmony import */ var src_app_services_housing_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! src/app/services/housing.service */ "2l73");
-/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "ofXK");
-/* harmony import */ var _Property_Card_property_card_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Property-Card/property-card.component */ "HCT1");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "tyNb");
+/* harmony import */ var src_app_services_housing_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/housing.service */ "2l73");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/common */ "ofXK");
+/* harmony import */ var _Property_Card_property_card_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../Property-Card/property-card.component */ "HCT1");
+
 
 
 
@@ -267,18 +269,23 @@ function PropertyListComponent_div_1_Template(rf, ctx) { if (rf & 1) {
     _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("Property", Casa_r1);
 } }
 class PropertyListComponent {
-    constructor(ServicioCasas) {
+    constructor(route, ServicioCasas) {
+        this.route = route;
         this.ServicioCasas = ServicioCasas;
+        this.SellRent = 1;
     }
     ngOnInit() {
-        this.ServicioCasas.GetTodasLasCasas().subscribe(data => {
+        if (this.route.snapshot.url.toString()) {
+            this.SellRent = 2;
+        }
+        this.ServicioCasas.GetTodasLasCasas(this.SellRent).subscribe(data => {
             this.Casas = data;
         }, error => {
             console.log(error);
         });
     }
 }
-PropertyListComponent.ɵfac = function PropertyListComponent_Factory(t) { return new (t || PropertyListComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_housing_service__WEBPACK_IMPORTED_MODULE_1__["HousingService"])); };
+PropertyListComponent.ɵfac = function PropertyListComponent_Factory(t) { return new (t || PropertyListComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](src_app_services_housing_service__WEBPACK_IMPORTED_MODULE_2__["HousingService"])); };
 PropertyListComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: PropertyListComponent, selectors: [["app-property-list"]], decls: 2, vars: 1, consts: [[1, "row"], ["class", "p-3 col-12 col-md-4 col-sm-6  ", 4, "ngFor", "ngForOf"], [1, "p-3", "col-12", "col-md-4", "col-sm-6"], [3, "Property"]], template: function PropertyListComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtemplate"](1, PropertyListComponent_div_1_Template, 2, 1, "div", 1);
@@ -286,7 +293,7 @@ PropertyListComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
     } if (rf & 2) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵproperty"]("ngForOf", ctx.Casas);
-    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["NgForOf"], _Property_Card_property_card_component__WEBPACK_IMPORTED_MODULE_3__["PropertyCardComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL1Byb3BlcnR5L3Byb3BlcnR5LWxpc3QvcHJvcGVydHktbGlzdC5jb21wb25lbnQuY3NzIn0= */"] });
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_3__["NgForOf"], _Property_Card_property_card_component__WEBPACK_IMPORTED_MODULE_4__["PropertyCardComponent"]], styles: ["\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL1Byb3BlcnR5L3Byb3BlcnR5LWxpc3QvcHJvcGVydHktbGlzdC5jb21wb25lbnQuY3NzIn0= */"] });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](PropertyListComponent, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
         args: [{
@@ -294,7 +301,7 @@ PropertyListComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
                 templateUrl: './property-list.component.html',
                 styleUrls: ['./property-list.component.css']
             }]
-    }], function () { return [{ type: src_app_services_housing_service__WEBPACK_IMPORTED_MODULE_1__["HousingService"] }]; }, null); })();
+    }], function () { return [{ type: _angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"] }, { type: src_app_services_housing_service__WEBPACK_IMPORTED_MODULE_2__["HousingService"] }]; }, null); })();
 
 
 /***/ }),
@@ -364,7 +371,7 @@ __webpack_require__.r(__webpack_exports__);
 class PropertyCardComponent {
 }
 PropertyCardComponent.ɵfac = function PropertyCardComponent_Factory(t) { return new (t || PropertyCardComponent)(); };
-PropertyCardComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: PropertyCardComponent, selectors: [["app-property-card"]], inputs: { Property: "Property" }, decls: 18, vars: 3, consts: [[1, "shadow-lg"], [1, "card"], [1, "EnvolturaImagen"], ["src", "assets/Images/casa_default.jpg", "alt", "Card image cap", 1, "card-img-top"], [1, "list-inline", "text-center", "member-icons", "animate"], [1, "list-inline-item"], [1, "btn", "btn-primary", 3, "routerLink"], [1, "far", "fa-edit"], [1, "btn", "btn-primary"], [1, "far", "fa-address-card"], [1, "card-body"], [1, "card-title"], [1, "card-text"], ["href", "#", 1, "btn", "btn-primary"]], template: function PropertyCardComponent_Template(rf, ctx) { if (rf & 1) {
+PropertyCardComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: PropertyCardComponent, selectors: [["app-property-card"]], inputs: { Property: "Property" }, decls: 18, vars: 4, consts: [[1, "shadow-lg"], [1, "card"], [1, "EnvolturaImagen"], ["onError", "this.src='assets/Images/casa_default.jpg'", "alt", "Card image cap", 1, "card-img-top", 3, "src"], [1, "list-inline", "text-center", "member-icons", "animate"], [1, "list-inline-item"], [1, "btn", "btn-primary", 3, "routerLink"], [1, "far", "fa-edit"], [1, "btn", "btn-primary"], [1, "far", "fa-address-card"], [1, "card-body"], [1, "card-title"], [1, "card-text"], ["href", "#", 1, "btn", "btn-primary"]], template: function PropertyCardComponent_Template(rf, ctx) { if (rf & 1) {
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](2, "div", 2);
@@ -396,7 +403,9 @@ PropertyCardComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵde
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
     } if (rf & 2) {
-        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate1"]("src", "assets/Images/", ctx.Property.Image, ".jpg", _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵsanitizeUrl"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](3);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵpropertyInterpolate1"]("routerLink", "/property-detail/", ctx.Property.Id, "");
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](7);
         _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate"](ctx.Property.Name);
