@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http'
 import { Routes, RouterModule } from '@angular/router';
+import {FormsModule} from '@angular/forms'
 
 import { AppComponent } from './app.component';
 import { PropertyCardComponent } from './Property/Property-Card/property-card.component';
@@ -31,6 +32,7 @@ const appRoutes: Routes = [
     PropertyDetailComponent
   ],
   imports: [
+    FormsModule,
     BrowserModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes)
